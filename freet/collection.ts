@@ -26,6 +26,10 @@ class FreetCollection {
       dateCreated: date,
       content,
       dateModified: date
+      // eslint-disable-next-line capitalized-comments
+      // likes: 0,
+      // hiddenLikes: false,
+      // sources: []
     });
     await freet.save(); // Saves freet to MongoDB
     return freet.populate('authorId');
@@ -96,6 +100,34 @@ class FreetCollection {
   static async deleteMany(authorId: Types.ObjectId | string): Promise<void> {
     await FreetModel.deleteMany({authorId});
   }
+
+  // /**
+  //  * Update a freet by adding or subtracting a like
+  //  *
+  //  * @param {string} freetId - The id of the freet to be updated
+  //  * @param {number} newLike - The new like or unlike to the freet
+  //  * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
+  //  */
+  // static async updateLikes(freetId: Types.ObjectId | string, newLike: number): Promise<HydratedDocument<Freet>> {
+  //   const freet = await FreetModel.findOne({_id: freetId});
+  //   freet.likes += newLike;
+  //   await freet.save();
+  //   return freet.populate('authorId');
+  // }
+
+  // /**
+  //  * Update the freet to hide or unhide its likes
+  //  *
+  //  * @param {string} freetId - The id of the freet to be updated
+  //  * @param {boolean} newPrivacy - Whether to hide or unhide the likes
+  //  * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
+  //  */
+  // static async updateLikePrivacy(freetId: Types.ObjectId | string, newPrivacy: boolean): Promise<HydratedDocument<Freet>> {
+  //   const freet = await FreetModel.findOne({_id: freetId});
+  //   freet.hiddenLikes = newPrivacy;
+  //   await freet.save();
+  //   return freet.populate('authorId');
+  // }
 }
 
 export default FreetCollection;
