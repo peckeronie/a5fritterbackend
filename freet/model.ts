@@ -14,10 +14,6 @@ export type Freet = {
   dateCreated: Date;
   content: string;
   dateModified: Date;
-  // eslint-disable-next-line capitalized-comments
-  // likes: number;
-  // hiddenLikes: boolean;
-  // sources: Types.Array<string>;
 };
 
 export type PopulatedFreet = {
@@ -26,10 +22,6 @@ export type PopulatedFreet = {
   dateCreated: Date;
   content: string;
   dateModified: Date;
-  // eslint-disable-next-line capitalized-comments
-  // likes: number;
-  // hiddenLikes: boolean;
-  // sources: Types.Array<string>;
 };
 
 // Mongoose schema definition for interfacing with a MongoDB table
@@ -58,19 +50,6 @@ const FreetSchema = new Schema<Freet>({
     type: Date,
     required: true
   }
-  // eslint-disable-next-line capitalized-comments
-  // likes: {
-  //   type: Number,
-  //   required: true
-  // },
-  // hiddenLikes: {
-  //   type: Boolean,
-  //   required: true
-  // },
-  // sources: {
-  //   type: [String],
-  //   required: true
-  // }
 });
 
 const FreetModel = model<Freet>('Freet', FreetSchema);

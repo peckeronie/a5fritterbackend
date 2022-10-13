@@ -9,10 +9,6 @@ type FreetResponse = {
   dateCreated: string;
   content: string;
   dateModified: string;
-  // eslint-disable-next-line capitalized-comments
-  // likes: number;
-  // hiddenLikes: boolean;
-  // sources: string[];
 };
 
 /**
