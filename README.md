@@ -327,6 +327,10 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/freets/like/:freetID?` - Like a freet
 
+**Body**
+
+- `freetID` _{string}_ - The id of the freet
+
 **Returns**
 
 - A success message
@@ -350,6 +354,10 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/freets/hide/:freetID` - Hide the likes for a freet
 
+**Body**
+
+- `freetID` _{string}_ - The id of the freet
+
 **Returns**
 
 - A success message
@@ -361,6 +369,10 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/freets/unhide/:freetID` - Unhide the likes for a freet
 
+**Body**
+
+- `freetID` _{string}_ - The id of the freet
+
 **Returns**
 
 - A success message
@@ -371,6 +383,11 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the freetId is invalid
 
 #### `POST /api/freets/addsource/:source/:freetID` - Add source to a freet
+
+**Body**
+
+- `source` _{string}_ - The source being added
+- `freetID` _{string}_ - The id of the freet
 
 **Returns**
 
@@ -428,6 +445,10 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/users/follow/:userName` - the current logged in user follows another user
 
+**Body**
+
+- `username` _{string}_ - The name of the user to be followed
+
 **Returns**
 
 - A success message
@@ -450,6 +471,10 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/users/hidefollow/:userName` - Hide the followers for a user
 
+**Body**
+
+- `username` _{string}_ - The name of the user
+
 **Returns**
 
 - A success message
@@ -460,6 +485,10 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the user by username does not exist
 
 #### `PUT /api/users/unhidefollow/:userName` - Unhide the followers for a user
+
+**Body**
+
+- `username` _{string}_ - The name of the user
 
 **Returns**
 
