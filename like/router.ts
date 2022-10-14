@@ -34,13 +34,13 @@ router.get(
 /**
  * Like a freet
  *
- * @name POST /api/freets/like/:id
+ * @name PUT /api/freets/like/:id
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
  * @throws {404} - If the freetId is not valid
  */
-router.post(
+router.put(
   '/like/:freetId?',
   [
     userValidator.isUserLoggedIn,
