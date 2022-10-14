@@ -1,6 +1,8 @@
 import type {HydratedDocument, Types} from 'mongoose';
 import type {Freet} from './model';
 import FreetModel from './model';
+import LikeModel from 'like/model';
+import SourceModel from 'source/model';
 import UserCollection from '../user/collection';
 
 /**
@@ -94,6 +96,17 @@ class FreetCollection {
    * @param {string} authorId - The id of author of freets
    */
   static async deleteMany(authorId: Types.ObjectId | string): Promise<void> {
+    // Delete like and sources too
+    // const author = await UserCollection.findOneByUserId(authorId);
+    // const freets = await this.findAllByUsername(author.username);
+    // const promises = [];
+    // for (const freet of freets) {
+    //   const freetId = freet._id;
+    //   promises.push(LikeModel.deleteMany({freetID: freetId}));
+    //   promises.push(SourceModel.deleteMany({freetID: freetId}));
+    // }
+
+    // await Promise.all(promises);
     await FreetModel.deleteMany({authorId});
   }
 }

@@ -313,3 +313,159 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if the user is not logged in
+
+#### `GET /api/freets/likecount/:id` - Get likes for a freet
+
+**Returns**
+
+- The current number of likes
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the freetId is invalid
+
+#### `PUT /api/freets/like/:freetID?` - Like a freet
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the freetId is invalid
+
+#### `DELETE /api/freets/like/:freetID?` - Unlike a freet
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the freetId is invalid
+- `401` if the user tries to unlike a freet they did not like
+
+#### `PUT /api/freets/hide/:freetID` - Hide the likes for a freet
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in or is not the original author of the freet
+- `404` if the freetId is invalid
+
+#### `PUT /api/freets/unhide/:freetID` - Unhide the likes for a freet
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in or is not the original author of the freet
+- `404` if the freetId is invalid
+
+#### `POST /api/freets/addsource/:source/:freetID` - Add source to a freet
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the freetId is invalid
+- `400` if the source is invalid
+
+#### `DELETE /api/freets/delsource/:source/:freetID` - Remove source from a freet
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the freetId is invalid
+
+#### `GET /api/freets/sources/:freetID` - Get the sources from a freet
+
+**Returns**
+
+- An array of sources for the specified freet
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the freetId is invalid
+
+#### `GET /api/users/follows/:userName` - Get the followers for a user
+
+**Returns**
+
+- An array of followers for the specified user
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the user by username does not exist
+
+#### `GET /api/users/following/:userName` - Get the following list for a user
+
+**Returns**
+
+- An array of accounts being followed by the specified user
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the user by username does not exist
+
+#### `PUT /api/users/follow/:userName` - the current logged in user follows another user
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the user by username does not exist
+
+#### `DELETE /api/users/follow/:userName` - current logged in user unfollows another user
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the user by username does not exist
+
+#### `PUT /api/users/hidefollow/:userName` - Hide the followers for a user
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in, or does not have permission to modify the current user's settings
+- `404` if the user by username does not exist
+
+#### `PUT /api/users/unhidefollow/:userName` - Unhide the followers for a user
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in, or does not have permission to modify the current user's settings
+- `404` if the user by username does not exist
