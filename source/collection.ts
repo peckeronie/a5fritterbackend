@@ -85,10 +85,11 @@ class SourceCollection {
    */
   static async removeSource(freetId: Types.ObjectId | string, removedSource: string): Promise<HydratedDocument<Source>> {
     const freetSources = await SourceModel.findOne({freetID: freetId});
-    const sourceArr = freetSources.sources;
-    const sourceIndex = sourceArr.indexOf(removedSource);
+    // eslint-disable-next-line capitalized-comments
+    // const sourceArr = freetSources.sources;
+    const sourceIndex = freetSources.sources.indexOf(removedSource);
     if (sourceIndex !== -1) {
-      sourceArr.splice(sourceIndex, 1);
+      freetSources.sources.splice(sourceIndex, 1);
     }
 
     await freetSources.save();

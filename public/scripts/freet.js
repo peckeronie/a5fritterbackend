@@ -66,16 +66,29 @@ function unhideLikes(fields) {
 }
 
 function addSource(fields) {
-  fetch(`/api/freets/addsource/${fields.source}/${fields.id}`, {method: 'POST', body: JSON.stringify(fields), headers: {'Content-Type': 'application/json'}})
+  fetch(`/api/freets/addsource/${fields.id}`, {method: 'POST', body: JSON.stringify(fields), headers: {'Content-Type': 'application/json'}})
     .then(showResponse)
     .catch(showResponse);
 }
 
 function removeSource(fields) {
-  fetch(`/api/freets/delsource/${fields.source}/${fields.id}`, {method: 'DELETE'})
+  fetch(`/api/freets/delsource/${fields.id}`, {method: 'PUT', body: JSON.stringify(fields), headers: {'Content-Type': 'application/json'}})
     .then(showResponse)
     .catch(showResponse);
 }
+
+// eslint-disable-next-line capitalized-comments
+// function addSource(fields) {
+//   fetch(`/api/freets/addsource/${fields.source}/${fields.id}`, {method: 'POST', body: JSON.stringify(fields), headers: {'Content-Type': 'application/json'}})
+//     .then(showResponse)
+//     .catch(showResponse);
+// }
+
+// function removeSource(fields) {
+//   fetch(`/api/freets/delsource/${fields.source}/${fields.id}`, {method: 'DELETE'})
+//     .then(showResponse)
+//     .catch(showResponse);
+// }
 
 function getSources(fields) {
   fetch(`/api/freets/sources/${fields.id}`)

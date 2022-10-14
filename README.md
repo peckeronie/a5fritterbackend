@@ -327,9 +327,9 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/freets/like/:freetID?` - Like a freet
 
-**Body**
+<!-- **Body**
 
-- `freetID` _{string}_ - The id of the freet
+- `freetID` _{string}_ - The id of the freet -->
 
 **Returns**
 
@@ -354,9 +354,9 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/freets/hide/:freetID` - Hide the likes for a freet
 
-**Body**
+<!-- **Body**
 
-- `freetID` _{string}_ - The id of the freet
+- `freetID` _{string}_ - The id of the freet -->
 
 **Returns**
 
@@ -369,9 +369,9 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/freets/unhide/:freetID` - Unhide the likes for a freet
 
-**Body**
+<!-- **Body**
 
-- `freetID` _{string}_ - The id of the freet
+- `freetID` _{string}_ - The id of the freet -->
 
 **Returns**
 
@@ -382,12 +382,11 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in or is not the original author of the freet
 - `404` if the freetId is invalid
 
-#### `POST /api/freets/addsource/:source/:freetID` - Add source to a freet
+#### `POST /api/freets/addsource/:freetID` - Add source to a freet
 
 **Body**
 
 - `source` _{string}_ - The source being added
-- `freetID` _{string}_ - The id of the freet
 
 **Returns**
 
@@ -399,7 +398,11 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the freetId is invalid
 - `400` if the source is invalid
 
-#### `DELETE /api/freets/delsource/:source/:freetID` - Remove source from a freet
+#### `PUT /api/freets/delsource/:freetID` - Remove source from a freet
+
+**Body**
+
+- `source` _{string}_ - The source to be removed
 
 **Returns**
 
@@ -445,9 +448,9 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/users/follow/:userName` - the current logged in user follows another user
 
-**Body**
+<!-- **Body**
 
-- `username` _{string}_ - The name of the user to be followed
+- `username` _{string}_ - The name of the user to be followed -->
 
 **Returns**
 
@@ -471,9 +474,9 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/users/hidefollow/:userName` - Hide the followers for a user
 
-**Body**
+<!-- **Body**
 
-- `username` _{string}_ - The name of the user
+- `username` _{string}_ - The name of the user -->
 
 **Returns**
 
@@ -486,9 +489,9 @@ This renders the `index.html` file that will be used to interact with the backen
 
 #### `PUT /api/users/unhidefollow/:userName` - Unhide the followers for a user
 
-**Body**
+<!-- **Body**
 
-- `username` _{string}_ - The name of the user
+- `username` _{string}_ - The name of the user -->
 
 **Returns**
 
