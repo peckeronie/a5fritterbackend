@@ -8,7 +8,7 @@ import type {Freet} from '../freet/model';
  * DO NOT implement operations here ---> use collection file
  */
 
-// Type definition for Freet on the backend
+// Type definition for Source on the backend
 export type Source = {
   _id: Types.ObjectId; // MongoDB assigns each object this ID on creation
   freetID: Freet;

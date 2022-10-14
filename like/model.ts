@@ -4,7 +4,7 @@ import type {User} from '../user/model';
 import type {Freet} from '../freet/model';
 
 /**
- * This file defines the properties stored in a Freet
+ * This file defines the properties stored in a Like concept
  * DO NOT implement operations here ---> use collection file
  */
 

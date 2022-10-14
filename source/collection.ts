@@ -19,8 +19,7 @@ class SourceCollection {
    * Initialize a Source data model
    *
    * @param {string} freetId - The id of the freet
-   * @param {string} content - The id of the content of the freet
-   * @return {Promise<HydratedDocument<Source>>} - The newly created freet
+   * @return {Promise<HydratedDocument<Source>>} - The newly created Source object
    */
   static async addOne(freetID: Types.ObjectId | string): Promise<HydratedDocument<Source>> {
     const freetSources = new SourceModel({
@@ -32,10 +31,10 @@ class SourceCollection {
   }
 
   /**
-   * Find a freet by freetId
+   * Find a Source object by freetId
    *
    * @param {string} freetId - The id of the freet to find
-   * @return {Promise<HydratedDocument<Freet>> | Promise<null> } - The freet with the given freetId, if any
+   * @return {Promise<HydratedDocument<Source>> | Promise<null> } - The Source object for the freet with the given freetId, if any
    */
   static async findOne(freetId: Types.ObjectId | string): Promise<HydratedDocument<Source>> {
     return SourceModel.findOne({freetID: freetId});
@@ -56,7 +55,7 @@ class SourceCollection {
    * Find all sources for a freet given by freetId
    *
    * @param {string} freetId - The id of the freet to find
-   * @return {Promise<HydratedDocument<Source>> | Promise<null> } - The freet with the given freetId, if any
+   * @return {Promise<string[]> } - The array of sources for the freet with the given freetId, if any
    */
   static async findSourcesByFreet(freetId: Types.ObjectId | string): Promise<string[]> {
     const freet = await SourceModel.findOne({freetID: freetId});
@@ -68,7 +67,7 @@ class SourceCollection {
    *
    * @param {string} freetId - The id of the freet to be updated
    * @param {number} newSource - The new source
-   * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
+   * @return {Promise<HydratedDocument<Source>>} - The newly updated Source object for the freet
    */
   static async addSource(freetId: Types.ObjectId | string, newSource: string): Promise<HydratedDocument<Source>> {
     const freetSources = await SourceModel.findOne({freetID: freetId});
@@ -82,7 +81,7 @@ class SourceCollection {
    *
    * @param {string} freetId - The id of the freet to be updated
    * @param {number} removedSource - The source to be removed
-   * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
+   * @return {Promise<HydratedDocument<Source>>} - The newly updated Source object for the freet
    */
   static async removeSource(freetId: Types.ObjectId | string, removedSource: string): Promise<HydratedDocument<Source>> {
     const freetSources = await SourceModel.findOne({freetID: freetId});

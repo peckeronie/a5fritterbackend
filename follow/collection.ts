@@ -18,7 +18,7 @@ class FollowCollection {
   /**
    * Initialize a Follow data model
    *
-   * @return {Promise<HydratedDocument<Freet>>} - The newly created freet
+   * @return {Promise<HydratedDocument<Follow>>} - The newly created follow object
    */
   static async addOne(authorId: Types.ObjectId | string): Promise<HydratedDocument<Follow>> {
     const follow = new FollowModel({
@@ -35,7 +35,7 @@ class FollowCollection {
    * Find a Follow object by userId.
    *
    * @param {string} userId - The userId of the user to find
-   * @return {Promise<HydratedDocument<User>> | Promise<null>} - The user with the given username, if any
+   * @return {Promise<HydratedDocument<Follow>> | Promise<null>} - The Follow object for the user with the given username, if any
    */
   static async findOne(userId: Types.ObjectId | string): Promise<HydratedDocument<Follow>> {
     return FollowModel.findOne({userID: userId});
@@ -68,7 +68,7 @@ class FollowCollection {
    *
    * @param {string} userId - The user being followed
    * @param {string} followerID - The user following an account
-   * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
+   * @return {Promise<HydratedDocument<Follow>>} - The newly updated Follow object
    */
   static async addFollower(userId: Types.ObjectId | string, followerID: Types.ObjectId | string): Promise<HydratedDocument<Follow>> {
     const followObj = await FollowModel.findOne({userID: userId});
@@ -87,7 +87,7 @@ class FollowCollection {
    *
    * @param {string} userId - The user being unfollowed
    * @param {string} followerID - The user who is unfollowing
-   * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
+   * @return {Promise<HydratedDocument<Follow>>} - The newly updated Follow object
    */
   static async removeFollower(userId: Types.ObjectId | string, followerID: Types.ObjectId | string): Promise<HydratedDocument<Follow>> {
     const followObj = await FollowModel.findOne({userID: userId});
@@ -114,7 +114,7 @@ class FollowCollection {
    *
    * @param {string} userId - The id of the user
    * @param {boolean} newPrivacy - Whether to hide or unhide the likes
-   * @return {Promise<HydratedDocument<Freet>>} - The newly updated freet
+   * @return {Promise<HydratedDocument<Follow>>} - The newly updated Follow object
    */
   static async updateFollowPrivacy(userId: Types.ObjectId | string, newPrivacy: boolean): Promise<HydratedDocument<Follow>> {
     const follow = await FollowModel.findOne({userID: userId});
