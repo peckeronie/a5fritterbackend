@@ -53,6 +53,12 @@ function getLikes(fields) {
     .catch(showResponse);
 }
 
+function getLikers(fields) {
+  fetch(`/api/freets/likeusers/${fields.id}`)
+    .then(showResponse)
+    .catch(showResponse);
+}
+
 function hideLikes(fields) {
   fetch(`/api/freets/hide/${fields.id}`, {method: 'PUT', body: JSON.stringify(fields), headers: {'Content-Type': 'application/json'}})
     .then(showResponse)

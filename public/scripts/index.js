@@ -42,6 +42,7 @@ const formsAndHandlers = {
   'like-freet': likeFreet,
   'unlike-freet': unlikeFreet,
   'get-likes': getLikes,
+  'get-likers': getLikers,
   'hide-likes': hideLikes,
   'unhide-likes': unhideLikes,
   'add-source': addSource,

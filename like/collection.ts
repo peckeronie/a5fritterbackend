@@ -4,6 +4,7 @@ import UserCollection from '../user/collection';
 import FreetCollection from '../freet/collection';
 import FreetModel from '../freet/model';
 import LikeModel from './model';
+import UserModel from 'user/model';
 
 /**
  * This files contains a class that has the functionality to explore freets
@@ -24,7 +25,8 @@ class LikeCollection {
     const freetLikes = new LikeModel({
       freetID,
       likes: 0,
-      hiddenLikes: false
+      hiddenLikes: false,
+      likers: []
     });
     await freetLikes.save();
     return freetLikes;
@@ -56,11 +58,22 @@ class LikeCollection {
    *
    * @param {string} freetId - The id of the freet to be updated
    * @param {number} newLike - The new like or unlike to the freet
+   * @param {string} userId - the id of the user who likes or unlikes the freet
    * @return {Promise<HydratedDocument<Like>>} - The newly updated Like object for the freet
    */
-  static async updateLikes(freetId: Types.ObjectId | string, newLike: number): Promise<HydratedDocument<Like>> {
+  static async updateLikes(freetId: Types.ObjectId | string, newLike: number, userId: Types.ObjectId | string): Promise<HydratedDocument<Like>> {
     const freet = await LikeModel.findOne({freetID: freetId});
+    const user = await UserCollection.findOneByUserId(userId);
     freet.likes += newLike;
+    if (newLike === 1) {
+      freet.likers.push(user.username);
+    } else {
+      const index = freet.likers.indexOf(user.username);
+      if (index !== -1) {
+        freet.likers.splice(index, 1);
+      }
+    }
+
     await freet.save();
     return freet;
   }

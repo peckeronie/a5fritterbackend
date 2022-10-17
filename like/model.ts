@@ -14,6 +14,7 @@ export type Like = {
   freetID: Freet;
   likes: number;
   hiddenLikes: boolean;
+  likers: Types.Array<string>;
 };
 
 // Mongoose schema definition for interfacing with a MongoDB table
@@ -31,6 +32,10 @@ const LikeSchema = new Schema<Like>({
   },
   hiddenLikes: {
     type: Boolean,
+    required: true
+  },
+  likers: {
+    type: [String],
     required: true
   }
 });
