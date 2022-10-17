@@ -27,8 +27,16 @@ router.get(
   ],
   async (req: Request, res: Response) => {
     const user = await UserCollection.findOneByUsername(req.params.userName);
-    const response = await FollowCollection.getFollows(user._id);
-    res.status(200).json({response});
+    const userId = user._id;
+    const followObj = await FollowCollection.findOne(userId);
+    if (req.session.userId !== userId.toString() && followObj.isHidden) {
+      res.status(200).json({
+        message: 'Followers are currently hidden'
+      });
+    } else {
+      const response = await FollowCollection.getFollows(user._id);
+      res.status(200).json({response});
+    }
   }
 );
 
@@ -98,7 +106,8 @@ router.put(
   '/follow/:userName?',
   [
     userValidator.isUserLoggedIn,
-    followValidator.isUserExists
+    followValidator.isUserExists,
+    followValidator.canFollow
   ],
   async (req: Request, res: Response) => {
     const user = await UserCollection.findOneByUserId(req.session.userId);
@@ -122,7 +131,9 @@ router.put(
 router.delete(
   '/follow/:userName?',
   [
-    userValidator.isUserLoggedIn
+    userValidator.isUserLoggedIn,
+    followValidator.isUserExists,
+    followValidator.canUnfollow
   ],
   async (req: Request, res: Response) => {
     const user = await UserCollection.findOneByUserId(req.session.userId);

@@ -1,6 +1,7 @@
 import type {Request, Response, NextFunction} from 'express';
 import {Types} from 'mongoose';
 import UserCollection from '../user/collection';
+import FollowCollection from '../follow/collection';
 
 /**
  * Checks if a user with the username in 'userID' exists
@@ -32,36 +33,45 @@ const isValidUserModifier = async (req: Request, res: Response, next: NextFuncti
   next();
 };
 
-// /**
-//  * Checks if a user with userId as author id in req.query exists
-//  */
-// const isUserExists = async (req: Request, res: Response, next: NextFunction) => {
-//   const user = await UserCollection.findOneByUserId(req.params.userId);
-//   if (!user) {
-//     res.status(404).json({
-//       error: `A user with id ${req.params.userId} does not exist.`
-//     });
-//     return;
-//   }
+/**
+ * Checks if the current user can follow a user
+ */
+const canFollow = async (req: Request, res: Response, next: NextFunction) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const user = await UserCollection.findOneByUserId(req.session.userId);
+  const user2 = await UserCollection.findOneByUsername(req.params.userName);
+  const followObj = await FollowCollection.findOne(user._id);
+  if (followObj.following.includes(user2.username)) {
+    res.status(401).json({
+      error: 'Already following the user'
+    });
+    return;
+  }
 
-//   next();
-// };
+  next();
+};
 
-// /**
-//  * Checks if the current user is the author of the freet whose freetId is in req.params
-//  */
-// const isValidUserModifier = async (req: Request, res: Response, next: NextFunction) => {
-//   if (req.session.userId !== req.params.userId.toString()) {
-//     res.status(403).json({
-//       error: 'Cannot modify other users\' freets.'
-//     });
-//     return;
-//   }
+/**
+ * Checks if the current user has already followed a user and can unfollow them
+ */
+const canUnfollow = async (req: Request, res: Response, next: NextFunction) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const user = await UserCollection.findOneByUserId(req.session.userId);
+  const user2 = await UserCollection.findOneByUsername(req.params.userName);
+  const followObj = await FollowCollection.findOne(user._id);
+  if (!followObj.following.includes(user2.username)) {
+    res.status(401).json({
+      error: 'Cannot unfollow a user that you are currently not following'
+    });
+    return;
+  }
 
-//   next();
-// };
+  next();
+};
 
 export {
   isUserExists,
-  isValidUserModifier
+  isValidUserModifier,
+  canFollow,
+  canUnfollow
 };

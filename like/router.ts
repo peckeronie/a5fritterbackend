@@ -1,6 +1,7 @@
 import type {NextFunction, Request, Response} from 'express';
 import express from 'express';
 import LikeCollection from './collection';
+import FreetCollection from '../freet/collection';
 import * as userValidator from '../user/middleware';
 import * as freetValidator from '../freet/middleware';
 import * as likeValidator from '../like/middleware';
@@ -25,7 +26,13 @@ router.get(
   ],
   async (req: Request, res: Response) => {
     const freetLikes = await LikeCollection.findOne(req.params.freetId);
-    const numLikes = freetLikes.likes;
+    const freet = await FreetCollection.findOne(req.params.freetId);
+    const userId = freet.authorId._id;
+    let numLikes = freetLikes.likes.toString();
+    if (req.session.userId !== userId.toString() && freetLikes.hiddenLikes) {
+      numLikes = 'Hidden';
+    }
+
     res.status(200).json({
       message: `Total number of likes: ${numLikes}`
     });
@@ -49,8 +56,16 @@ router.get(
   ],
   async (req: Request, res: Response) => {
     const freetLikes = await LikeCollection.findOne(req.params.freetId);
-    const names = freetLikes.likers;
-    res.status(200).json({names});
+    const freet = await FreetCollection.findOne(req.params.freetId);
+    const userId = freet.authorId._id;
+    if (req.session.userId !== userId.toString() && freetLikes.hiddenLikes) {
+      res.status(200).json({
+        message: 'Likers are currently hidden'
+      });
+    } else {
+      const names = freetLikes.likers;
+      res.status(200).json({names});
+    }
   }
 );
 
