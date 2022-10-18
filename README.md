@@ -318,7 +318,18 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Returns**
 
-- The current number of likes
+- The current number of likes, or a message that the likes are currently hidden
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the freetId is invalid
+
+#### `GET /api/freets/likeusers/:id` - Get users who liked a freet
+
+**Returns**
+
+- The array of usernames of users who have liked the freet, or a message that the likes are currently hidden
 
 **Throws**
 
@@ -339,6 +350,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 - `403` if the user is not logged in
 - `404` if the freetId is invalid
+- `401` if the user has already liked the freet before
 
 #### `DELETE /api/freets/like/:freetID?` - Unlike a freet
 
@@ -428,7 +440,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Returns**
 
-- An array of followers for the specified user
+- An array of followers for the specified user, or a message that followers are currently hidden
 
 **Throws**
 
@@ -460,6 +472,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 - `403` if the user is not logged in
 - `404` if the user by username does not exist
+- `401` if the logged in user is already following the user
 
 #### `DELETE /api/users/follow/:userName` - current logged in user unfollows another user
 
@@ -471,6 +484,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 - `403` if the user is not logged in
 - `404` if the user by username does not exist
+- `401` if the logged in user tries to unfollow a user they are currently not following
 
 #### `PUT /api/users/hidefollow/:userName` - Hide the followers for a user
 
