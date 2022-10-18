@@ -13,7 +13,7 @@ const router = express.Router();
 /**
  * Get followers for a user
  *
- * @name GET /api/users/follows/:userName
+ * @name GET /api/follow/follows/:userName
  *
  * @return {string} - The followers for the user
  * @throws {403} - If the user is not logged in
@@ -43,7 +43,7 @@ router.get(
 /**
  * Get accounts being followed by a user
  *
- * @name GET /api/users/following/:userName
+ * @name GET /api/follow/following/:userName
  *
  * @return {string} - The following list for the user
  * @throws {403} - If the user is not logged in
@@ -65,7 +65,7 @@ router.get(
 /**
  * Get freets for the accounts being followed by a user
  *
- * @name GET /api/users/followfreets/:userName
+ * @name GET /api/follow/followfreets/:userName
  *
  * @return {string} - The following list for the user
  * @throws {403} - If the user is not logged in
@@ -96,14 +96,14 @@ router.get(
 /**
  * Follow a user
  *
- * @name PUT /api/users/follow/:userName
+ * @name PUT /api/follow/followuser/:userName
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
  * @throws {404} - If the user does not exist
  */
 router.put(
-  '/follow/:userName?',
+  '/followuser/:userName?',
   [
     userValidator.isUserLoggedIn,
     followValidator.isUserExists,
@@ -122,14 +122,14 @@ router.put(
 /**
  * Unfollow a user
  *
- * @name Delete /api/users/follow/:userName
+ * @name Delete /api/follow/followuser/:userName
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
  * @throws {404} - If the user does not exist
  */
 router.delete(
-  '/follow/:userName?',
+  '/followuser/:userName?',
   [
     userValidator.isUserLoggedIn,
     followValidator.isUserExists,
@@ -148,7 +148,7 @@ router.delete(
 /**
  * Hide the followers for a user
  *
- * @name Put /api/users/hidefollow/:userName
+ * @name Put /api/follow/hidefollow/:userName
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in, or is not the current user modifying settings
@@ -175,7 +175,7 @@ router.put(
 /**
  * Unhide the followers for a user
  *
- * @name Put /api/users/unhidefollow/:userName
+ * @name Put /api/follow/unhidefollow/:userName
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in, or is not the current user modifying settings

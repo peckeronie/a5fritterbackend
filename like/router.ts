@@ -12,7 +12,7 @@ const router = express.Router();
 /**
  * Get likes for a freet
  *
- * @name GET /api/freets/likecount/:id
+ * @name GET /api/likes/likecount/:id
  *
  * @return {string} - The number of likes
  * @throws {403} - If the user is not logged in
@@ -42,7 +42,7 @@ router.get(
 /**
  * Get likers for a freet
  *
- * @name GET /api/freets/likeusers/:id
+ * @name GET /api/likes/likeusers/:id
  *
  * @return {string} - The usernames of users who liked a freet
  * @throws {403} - If the user is not logged in
@@ -72,7 +72,7 @@ router.get(
 /**
  * Like a freet
  *
- * @name PUT /api/freets/like/:id
+ * @name PUT /api/likes/like/:id
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
@@ -96,7 +96,7 @@ router.put(
 /**
  * Unlike a freet
  *
- * @name Delete /api/freets/like/:id
+ * @name Delete /api/likes/like/:id
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
@@ -120,7 +120,7 @@ router.delete(
 /**
  * Hide the likes for a freet
  *
- * @name Put /api/freets/hide/:id
+ * @name Put /api/likes/hide/:id
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
@@ -146,7 +146,7 @@ router.put(
 /**
  * Unhide the likes for a freet
  *
- * @name Put /api/freets/unhide/:id
+ * @name Put /api/likes/unhide/:id
  *
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in

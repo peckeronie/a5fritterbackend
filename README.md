@@ -314,7 +314,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 - `403` if the user is not logged in
 
-#### `GET /api/freets/likecount/:id` - Get likes for a freet
+#### `GET /api/likes/likecount/:id` - Get likes for a freet
 
 **Returns**
 
@@ -325,7 +325,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in
 - `404` if the freetId is invalid
 
-#### `GET /api/freets/likeusers/:id` - Get users who liked a freet
+#### `GET /api/likes/likeusers/:id` - Get users who liked a freet
 
 **Returns**
 
@@ -336,7 +336,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in
 - `404` if the freetId is invalid
 
-#### `PUT /api/freets/like/:freetID?` - Like a freet
+#### `PUT /api/likes/like/:freetID?` - Like a freet
 
 <!-- **Body**
 
@@ -352,7 +352,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the freetId is invalid
 - `401` if the user has already liked the freet before
 
-#### `DELETE /api/freets/like/:freetID?` - Unlike a freet
+#### `DELETE /api/likes/like/:freetID?` - Unlike a freet
 
 **Returns**
 
@@ -364,7 +364,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the freetId is invalid
 - `401` if the user tries to unlike a freet they did not like
 
-#### `PUT /api/freets/hide/:freetID` - Hide the likes for a freet
+#### `PUT /api/likes/hide/:freetID` - Hide the likes for a freet
 
 <!-- **Body**
 
@@ -379,7 +379,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in or is not the original author of the freet
 - `404` if the freetId is invalid
 
-#### `PUT /api/freets/unhide/:freetID` - Unhide the likes for a freet
+#### `PUT /api/likes/unhide/:freetID` - Unhide the likes for a freet
 
 <!-- **Body**
 
@@ -394,7 +394,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in or is not the original author of the freet
 - `404` if the freetId is invalid
 
-#### `POST /api/freets/addsource/:freetID` - Add source to a freet
+#### `POST /api/source/addsource/:freetID` - Add source to a freet
 
 **Body**
 
@@ -410,7 +410,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the freetId is invalid
 - `400` if the source is invalid
 
-#### `PUT /api/freets/delsource/:freetID` - Remove source from a freet
+#### `PUT /api/source/delsource/:freetID` - Remove source from a freet
 
 **Body**
 
@@ -425,7 +425,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in
 - `404` if the freetId is invalid
 
-#### `GET /api/freets/sources/:freetID` - Get the sources from a freet
+#### `GET /api/source/sources/:freetID` - Get the sources from a freet
 
 **Returns**
 
@@ -436,7 +436,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in
 - `404` if the freetId is invalid
 
-#### `GET /api/users/follows/:userName` - Get the followers for a user
+#### `GET /api/follow/follows/:userName` - Get the followers for a user
 
 **Returns**
 
@@ -447,7 +447,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in
 - `404` if the user by username does not exist
 
-#### `GET /api/users/following/:userName` - Get the following list for a user
+#### `GET /api/follow/following/:userName` - Get the following list for a user
 
 **Returns**
 
@@ -458,7 +458,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in
 - `404` if the user by username does not exist
 
-#### `PUT /api/users/follow/:userName` - the current logged in user follows another user
+#### `PUT /api/follow/followuser/:userName` - the current logged in user follows another user
 
 <!-- **Body**
 
@@ -474,7 +474,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the user by username does not exist
 - `401` if the logged in user is already following the user
 
-#### `DELETE /api/users/follow/:userName` - current logged in user unfollows another user
+#### `DELETE /api/follow/followuser/:userName` - current logged in user unfollows another user
 
 **Returns**
 
@@ -486,7 +486,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `404` if the user by username does not exist
 - `401` if the logged in user tries to unfollow a user they are currently not following
 
-#### `PUT /api/users/hidefollow/:userName` - Hide the followers for a user
+#### `PUT /api/follow/hidefollow/:userName` - Hide the followers for a user
 
 <!-- **Body**
 
@@ -501,7 +501,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in, or does not have permission to modify the current user's settings
 - `404` if the user by username does not exist
 
-#### `PUT /api/users/unhidefollow/:userName` - Unhide the followers for a user
+#### `PUT /api/follow/unhidefollow/:userName` - Unhide the followers for a user
 
 <!-- **Body**
 

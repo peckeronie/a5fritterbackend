@@ -9,7 +9,7 @@ const router = express.Router();
 /**
  * Get all sources from a freet
  *
- * @name GET /api/freets/sources/:id
+ * @name GET /api/source/sources/:id
  *
  * @return {SourceResponse[]} - An array of sources for the freet with freetID
  * @throws {403} - If authorId is not given
@@ -30,7 +30,7 @@ router.get(
 /**
  * Add source to a freet
  *
- * @name POST /api/freets/addsource/:id
+ * @name POST /api/source/addsource/:id
  *
  * @param {string} source - the new source to be added
  * @return {string} - A success message
@@ -54,7 +54,7 @@ router.post(
 /**
  * Remove source from a freet
  *
- * @name PUT /api/freets/delsource/:id
+ * @name PUT /api/source/delsource/:id
  *
  * @param {string} source - the source to be removed
  * @return {string} - A success message
