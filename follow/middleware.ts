@@ -42,7 +42,7 @@ const canFollow = async (req: Request, res: Response, next: NextFunction) => {
   const user2 = await UserCollection.findOneByUsername(req.params.userName);
   const followObj = await FollowCollection.findOne(user._id);
   if (followObj.following.includes(user2.username)) {
-    res.status(401).json({
+    res.status(403).json({
       error: 'Already following the user'
     });
     return;
@@ -60,7 +60,7 @@ const canUnfollow = async (req: Request, res: Response, next: NextFunction) => {
   const user2 = await UserCollection.findOneByUsername(req.params.userName);
   const followObj = await FollowCollection.findOne(user._id);
   if (!followObj.following.includes(user2.username)) {
-    res.status(401).json({
+    res.status(403).json({
       error: 'Cannot unfollow a user that you are currently not following'
     });
     return;

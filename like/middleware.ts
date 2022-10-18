@@ -52,7 +52,7 @@ const canUnlike = async (req: Request, res: Response, next: NextFunction) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const user = await UserCollection.findOneByUserId(req.session.userId);
   if (!freet.likers.includes(user.username)) {
-    res.status(401).json({
+    res.status(403).json({
       error: 'Cannot unlike a freet that was not previously liked.'
     });
     return;
@@ -69,7 +69,7 @@ const isAlreadyLiked = async (req: Request, res: Response, next: NextFunction) =
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const user = await UserCollection.findOneByUserId(req.session.userId);
   if (freet.likers.includes(user.username)) {
-    res.status(401).json({
+    res.status(403).json({
       error: 'Cannot like a freet more than once.'
     });
     return;

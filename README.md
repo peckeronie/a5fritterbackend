@@ -348,9 +348,8 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `403` if the user is not logged in
+- `403` if the user is not logged in, or if the user has already liked the freet before
 - `404` if the freetId is invalid
-- `401` if the user has already liked the freet before
 
 #### `DELETE /api/likes/like/:freetID?` - Unlike a freet
 
@@ -360,9 +359,8 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `403` if the user is not logged in
+- `403` if the user is not logged in, or if the user tries to unlike a freet they did not like
 - `404` if the freetId is invalid
-- `401` if the user tries to unlike a freet they did not like
 
 #### `PUT /api/likes/hide/:freetID` - Hide the likes for a freet
 
@@ -470,9 +468,8 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `403` if the user is not logged in
+- `403` if the user is not logged in, or if the logged in user is already following the user
 - `404` if the user by username does not exist
-- `401` if the logged in user is already following the user
 
 #### `DELETE /api/follow/followuser/:userName` - current logged in user unfollows another user
 
@@ -482,9 +479,8 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `403` if the user is not logged in
+- `403` if the user is not logged in, or if the logged in user tries to unfollow a user they are currently not following
 - `404` if the user by username does not exist
-- `401` if the logged in user tries to unfollow a user they are currently not following
 
 #### `PUT /api/follow/hidefollow/:userName` - Hide the followers for a user
 
