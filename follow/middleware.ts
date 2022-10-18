@@ -48,6 +48,13 @@ const canFollow = async (req: Request, res: Response, next: NextFunction) => {
     return;
   }
 
+  if (user.username === user2.username) {
+    res.status(403).json({
+      error: 'Cannot follow yourself'
+    });
+    return;
+  }
+
   next();
 };
 
