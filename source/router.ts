@@ -37,6 +37,7 @@ router.get(
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
  * @throws {404} - If the freetId is not valid
+ * @throws {400} - If the source is not a valid website
  */
 router.post(
   '/addsource/:freetId?',
@@ -62,13 +63,15 @@ router.post(
  * @return {string} - A success message
  * @throws {403} - If the user is not logged in
  * @throws {404} - If the freetId is not valid
+ * @throws {400} - If the source does not exist
  */
 router.put(
   '/delsource/:freetId?',
   [
     userValidator.isUserLoggedIn,
     freetValidator.isFreetExists,
-    freetValidator.isValidFreetModifier
+    freetValidator.isValidFreetModifier,
+    sourceValidator.sourceExists
   ],
   async (req: Request, res: Response) => {
     await SourceCollection.removeSource(req.params.freetId, req.body.source);

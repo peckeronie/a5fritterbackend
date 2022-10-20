@@ -422,6 +422,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 - `403` if the user is not logged in, or if the user is not the author of the freet
 - `404` if the freetId is invalid
+- `400` if the source does not exist (was not added as a source originally to the freet)
 
 #### `GET /api/source/sources/:freetID` - Get the sources from a freet
 
