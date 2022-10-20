@@ -67,7 +67,8 @@ router.put(
   '/delsource/:freetId?',
   [
     userValidator.isUserLoggedIn,
-    freetValidator.isFreetExists
+    freetValidator.isFreetExists,
+    freetValidator.isValidFreetModifier
   ],
   async (req: Request, res: Response) => {
     await SourceCollection.removeSource(req.params.freetId, req.body.source);

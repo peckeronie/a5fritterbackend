@@ -420,7 +420,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `403` if the user is not logged in
+- `403` if the user is not logged in, or if the user is not the author of the freet
 - `404` if the freetId is invalid
 
 #### `GET /api/source/sources/:freetID` - Get the sources from a freet
