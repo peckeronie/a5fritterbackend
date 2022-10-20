@@ -20,7 +20,7 @@ function isValidUrl(str: string) {
  * Checks if a source is a valid website url
  */
 const isValidSource = (req: Request, res: Response, next: NextFunction) => {
-  if (!isValidUrl(req.params.source)) {
+  if (!isValidUrl(req.body.source)) {
     res.status(400).json({
       error: {
         username: 'Source must be a valid link or url.'

@@ -3,6 +3,7 @@ import express from 'express';
 import SourceCollection from './collection';
 import * as userValidator from '../user/middleware';
 import * as freetValidator from '../freet/middleware';
+import * as sourceValidator from '../source/middleware';
 
 const router = express.Router();
 
@@ -41,7 +42,8 @@ router.post(
   '/addsource/:freetId?',
   [
     userValidator.isUserLoggedIn,
-    freetValidator.isFreetExists
+    freetValidator.isFreetExists,
+    sourceValidator.isValidSource
   ],
   async (req: Request, res: Response) => {
     await SourceCollection.addSource(req.params.freetId, req.body.source);
